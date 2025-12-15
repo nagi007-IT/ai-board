@@ -1,0 +1,932 @@
+# Translations template for PROJECT.
+# Copyright (C) 2025 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-11-20 22:25+0900\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: app.py:191
+msgid "Language changed."
+msgstr ""
+
+#: app.py:193
+msgid "Unsupported language."
+msgstr ""
+
+#: app.py:787
+msgid "No file selected."
+msgstr ""
+
+#: app.py:791
+msgid "Unsupported extension (jpg/jpeg/png/webp only)."
+msgstr ""
+
+#: app.py:794
+msgid "Invalid image MIME type."
+msgstr ""
+
+#: app.py:799
+#, python-format
+msgid "File too large (max %(n)s MB)."
+msgstr ""
+
+#: app.py:807
+msgid "Suspiciously large image."
+msgstr ""
+
+#: app.py:809
+msgid "Unrecognized image file."
+msgstr ""
+
+#: app.py:811
+msgid "Image validation failed."
+msgstr ""
+
+#: app.py:939
+msgid "Please enter username & password."
+msgstr ""
+
+#: app.py:947
+msgid "Registered. Please log in."
+msgstr ""
+
+#: app.py:952
+msgid "Registration failed. Try another username."
+msgstr ""
+
+#: app.py:976
+msgid "Your account is banned."
+msgstr ""
+
+#: app.py:979
+msgid "Your account is suspended."
+msgstr ""
+
+#: app.py:982
+msgid "Logged in."
+msgstr ""
+
+#: app.py:984
+msgid "Invalid credentials."
+msgstr ""
+
+#: app.py:991
+msgid "Logged out."
+msgstr ""
+
+#: app.py:1288 templates/edit_post.html:22 templates/new_post.html:16
+#: templates/posts.html:11
+msgid "Genre"
+msgstr ""
+
+#: app.py:1289 templates/detail.html:33 templates/edit_post.html:47
+#: templates/new_post.html:42
+msgid "AI used"
+msgstr ""
+
+#: app.py:1290
+msgid "Author"
+msgstr ""
+
+#: app.py:1291
+msgid "Posted at"
+msgstr ""
+
+#: app.py:1292
+msgid "Updated at"
+msgstr ""
+
+#: app.py:1293 templates/detail.html:34
+msgid "Tools"
+msgstr ""
+
+#: app.py:1294 templates/edit_post.html:32 templates/new_post.html:30
+msgid "Content"
+msgstr ""
+
+#: app.py:1295 templates/detail.html:35 templates/edit_post.html:42
+#: templates/new_post.html:48
+msgid "Chat log URL"
+msgstr ""
+
+#: app.py:1334 app.py:1394
+msgid "Title and content are required."
+msgstr ""
+
+#: app.py:1360 app.py:1415
+msgid "Image upload failed."
+msgstr ""
+
+#: app.py:1364
+msgid "Post created."
+msgstr ""
+
+#: app.py:1419
+msgid "Post updated."
+msgstr ""
+
+#: app.py:1442
+msgid "Post deleted."
+msgstr ""
+
+#: app.py:1477
+msgid "Comment posted."
+msgstr ""
+
+#: app.py:1505
+msgid "Comment deleted."
+msgstr ""
+
+#: app.py:1518
+msgid "Removed from favorites."
+msgstr ""
+
+#: app.py:1525
+msgid "You cannot favorite this post right now."
+msgstr ""
+
+#: app.py:1528
+msgid "Added to favorites."
+msgstr ""
+
+#: app.py:1587
+msgid "Invalid report."
+msgstr ""
+
+#: app.py:1602
+msgid "Reported. Thank you."
+msgstr ""
+
+#: app.py:1606
+msgid "Failed to submit report."
+msgstr ""
+
+#: app.py:1632
+msgid "Post moderation applied."
+msgstr ""
+
+#: app.py:1655
+msgid "Comment removed."
+msgstr ""
+
+#: app.py:1665
+msgid "Comment moderation applied."
+msgstr ""
+
+#: app.py:1908
+msgid "Security token expired or invalid. Please retry."
+msgstr ""
+
+#: app.py:1913
+msgid "File too large."
+msgstr ""
+
+#: templates/admin.html:9
+msgid "Total posts"
+msgstr ""
+
+#: templates/admin.html:17
+msgid "Total comments"
+msgstr ""
+
+#: templates/admin.html:25
+msgid "Open reports"
+msgstr ""
+
+#: templates/base.html:38 templates/posts.html:2
+msgid "Posts"
+msgstr ""
+
+#: templates/base.html:44 templates/posts.html:66
+msgid "Favorites"
+msgstr ""
+
+#: templates/base.html:51
+msgid "New"
+msgstr ""
+
+#: templates/base.html:63
+msgid "Language"
+msgstr ""
+
+#: templates/base.html:79
+msgid "Logout"
+msgstr ""
+
+#: templates/base.html:83 templates/login.html:2 templates/login.html:8
+#: templates/login.html:18 templates/register.html:19
+msgid "Login"
+msgstr ""
+
+#: templates/base.html:84 templates/login.html:19 templates/register.html:2
+#: templates/register.html:8
+msgid "Sign up"
+msgstr ""
+
+#: templates/detail.html:10 templates/posts.html:63
+msgid "by"
+msgstr ""
+
+#: templates/detail.html:21
+msgid "Favorite"
+msgstr ""
+
+#: templates/detail.html:56
+msgid "Edit"
+msgstr ""
+
+#: templates/detail.html:58
+msgid "Export PDF"
+msgstr ""
+
+#: templates/detail.html:63
+msgid "Comments"
+msgstr ""
+
+#: templates/detail.html:68
+msgid "Write a comment..."
+msgstr ""
+
+#: templates/detail.html:69
+msgid "Post comment"
+msgstr ""
+
+#: templates/detail.html:72
+msgid "Please log in to comment."
+msgstr ""
+
+#: templates/detail.html:90
+msgid "Delete this comment?"
+msgstr ""
+
+#: templates/detail.html:92
+msgid "Delete"
+msgstr ""
+
+#: templates/detail.html:103
+msgid "Reply..."
+msgstr ""
+
+#: templates/detail.html:104
+msgid "Reply"
+msgstr ""
+
+#: templates/detail.html:111
+msgid "No comments yet."
+msgstr ""
+
+#: templates/detail.html:121
+msgid "Report reason (optional)"
+msgstr ""
+
+#: templates/detail.html:122
+msgid "Report"
+msgstr ""
+
+#: templates/edit_post.html:2 templates/edit_post.html:6
+msgid "Edit Post"
+msgstr ""
+
+#: templates/edit_post.html:27 templates/new_post.html:23
+msgid "Title"
+msgstr ""
+
+#: templates/edit_post.html:37 templates/new_post.html:36
+msgid "Tools used"
+msgstr ""
+
+#: templates/edit_post.html:52
+msgid "Current Image"
+msgstr ""
+
+#: templates/edit_post.html:57
+msgid "No image"
+msgstr ""
+
+#: templates/edit_post.html:60
+msgid "Replace image (optional)"
+msgstr ""
+
+#: templates/edit_post.html:67
+msgid "Save"
+msgstr ""
+
+#: templates/edit_post.html:68 templates/new_post.html:74
+msgid "Cancel"
+msgstr ""
+
+#: templates/edit_post.html:73
+msgid "Delete this post?"
+msgstr ""
+
+#: templates/edit_post.html:75
+msgid "Delete this post"
+msgstr ""
+
+#: templates/login.html:11 templates/register.html:11
+msgid "Username"
+msgstr ""
+
+#: templates/login.html:15 templates/register.html:15
+msgid "Password"
+msgstr ""
+
+#: templates/new_post.html:2
+msgid "New Post"
+msgstr ""
+
+#: templates/new_post.html:6
+msgid "Create a Post"
+msgstr ""
+
+#: templates/new_post.html:19
+msgid "Please enter a genre."
+msgstr ""
+
+#: templates/new_post.html:26
+msgid "Please enter a title."
+msgstr ""
+
+#: templates/new_post.html:32
+msgid "Please enter content."
+msgstr ""
+
+#: templates/new_post.html:54
+msgid "Image (optional)"
+msgstr ""
+
+#: templates/new_post.html:60
+msgid "Tags (multi-select)"
+msgstr ""
+
+#: templates/new_post.html:73
+msgid "Post"
+msgstr ""
+
+#: templates/posts.html:7
+msgid "Keyword"
+msgstr ""
+
+#: templates/posts.html:8
+msgid "Search..."
+msgstr ""
+
+#: templates/posts.html:13
+msgid "All"
+msgstr ""
+
+#: templates/posts.html:20
+msgid "Sort"
+msgstr ""
+
+#: templates/posts.html:22
+msgid "Newest"
+msgstr ""
+
+#: templates/posts.html:23
+msgid "Updated"
+msgstr ""
+
+#: templates/posts.html:24
+msgid "Likes"
+msgstr ""
+
+#: templates/posts.html:25
+msgid "Relevance"
+msgstr ""
+
+#: templates/posts.html:30
+msgid "Search"
+msgstr ""
+
+#: templates/posts.html:83 templates/user.html:17
+msgid "Open"
+msgstr ""
+
+#: templates/posts.html:95
+msgid "Prev"
+msgstr ""
+
+#: templates/posts.html:101
+msgid "Next"
+msgstr ""
+
+#: templates/posts.html:107
+msgid "No posts found."
+msgstr ""
+
+#: templates/register.html:18
+msgid "Create account"
+msgstr ""
+
+#: templates/user.html:24
+msgid "No posts."
+msgstr ""
+
+#: templates/errors/403.html:6
+msgid "You are not allowed to access this page."
+msgstr ""
+
+#: templates/errors/403.html:7 templates/errors/404.html:7
+msgid "Back to posts"
+msgstr ""
+
+#: templates/errors/404.html:6
+msgid "The page was not found."
+msgstr ""
+
+#: venv/Lib/site-packages/click/_termui_impl.py:600
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: venv/Lib/site-packages/click/_termui_impl.py:604
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1084
+#: venv/Lib/site-packages/click/core.py:1121
+#, python-brace-format
+msgid "{text} {deprecated_message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1140
+msgid "Options"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1202
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/core.py:1221
+#, python-brace-format
+msgid "DeprecationWarning: The command {name!r} is deprecated.{extra_message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1405
+msgid "Aborted!"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1779
+msgid "Commands"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1810
+msgid "Missing command."
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:1888
+#, python-brace-format
+msgid "No such command {name!r}."
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2303
+msgid "Value must be an iterable."
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2324
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/core.py:2404
+#, python-brace-format
+msgid ""
+"DeprecationWarning: The {param_type} {name!r} is "
+"deprecated.{extra_message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2807
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2810
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2814
+msgid "required"
+msgstr ""
+
+#: venv/Lib/site-packages/click/core.py:2870
+msgid "(dynamic)"
+msgstr ""
+
+#: venv/Lib/site-packages/click/decorators.py:465
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: venv/Lib/site-packages/click/decorators.py:522
+msgid "Show the version and exit."
+msgstr ""
+
+#: venv/Lib/site-packages/click/decorators.py:548
+msgid "Show this message and exit."
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:50
+#: venv/Lib/site-packages/click/exceptions.py:89
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:81
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:130
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:132
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:190
+msgid "Missing argument"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:192
+msgid "Missing option"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:194
+msgid "Missing parameter"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:196
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:203
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:223
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:235
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/exceptions.py:282
+msgid "unknown error"
+msgstr ""
+
+#: venv/Lib/site-packages/click/exceptions.py:289
+#, python-brace-format
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/formatting.py:156
+msgid "Usage:"
+msgstr ""
+
+#: venv/Lib/site-packages/click/parser.py:200
+#, python-brace-format
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: venv/Lib/site-packages/click/parser.py:383
+#, python-brace-format
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: venv/Lib/site-packages/click/parser.py:444
+#, python-brace-format
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/shell_completion.py:326
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: venv/Lib/site-packages/click/shell_completion.py:333
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:162
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:178
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:180
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:191
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:247
+msgid "Error: invalid input"
+msgstr ""
+
+#: venv/Lib/site-packages/click/termui.py:866
+msgid "Press any key to continue..."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:332
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:369
+#, python-brace-format
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/types.py:460
+#, python-brace-format
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/click/types.py:482
+#, python-brace-format
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:538
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:679
+#, python-brace-format
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:703
+#, python-brace-format
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:893
+msgid "file"
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:895
+msgid "directory"
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:897
+msgid "path"
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:944
+#, python-brace-format
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:953
+#, python-brace-format
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:961
+#, python-brace-format
+msgid "{name} {filename!r} is a directory."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:970
+#, python-brace-format
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:979
+#, python-brace-format
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:988
+#, python-brace-format
+msgid "{name} {filename!r} is not executable."
+msgstr ""
+
+#: venv/Lib/site-packages/click/types.py:1055
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:55
+#: venv/Lib/site-packages/wtforms/validators.py:293
+#: venv/Lib/site-packages/wtforms/validators.py:323
+msgid "This field is required."
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:94
+#, python-brace-format
+msgid "File does not have an approved extension: {extensions}"
+msgstr ""
+
+#: venv/Lib/site-packages/flask_wtf/file.py:101
+msgid "File does not have an approved extension."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:86
+#, python-format
+msgid "Invalid field name '%s'."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:99
+#, python-format
+msgid "Field must be equal to %(other_name)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:146
+#, python-format
+msgid "Field must be at least %(min)d character long."
+msgid_plural "Field must be at least %(min)d characters long."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:152
+#, python-format
+msgid "Field cannot be longer than %(max)d character."
+msgid_plural "Field cannot be longer than %(max)d characters."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:158
+#, python-format
+msgid "Field must be exactly %(max)d character long."
+msgid_plural "Field must be exactly %(max)d characters long."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:164
+#, python-format
+msgid "Field must be between %(min)d and %(max)d characters long."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:216
+#, python-format
+msgid "Number must be at least %(min)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:219
+#, python-format
+msgid "Number must be at most %(max)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:222
+#, python-format
+msgid "Number must be between %(min)s and %(max)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:358
+msgid "Invalid input."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:422
+msgid "Invalid email address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:460
+msgid "Invalid IP address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:503
+msgid "Invalid Mac address."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:540
+msgid "Invalid URL."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:561
+msgid "Invalid UUID."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:595
+#, python-format
+msgid "Invalid value, must be one of: %(values)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:631
+#, python-format
+msgid "Invalid value, can't be any of: %(values)s."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:700
+msgid "This field cannot be edited."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/validators.py:716
+msgid "This field is disabled and cannot have a value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/core.py:96
+msgid "Invalid CSRF Token."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:64
+msgid "CSRF token missing."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:72
+msgid "CSRF failed."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/csrf/session.py:77
+msgid "CSRF token expired."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:142
+msgid "Invalid Choice: could not coerce."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:149
+#: venv/Lib/site-packages/wtforms/fields/choices.py:203
+msgid "Choices cannot be None."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:155
+msgid "Not a valid choice."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:194
+msgid "Invalid choice(s): one or more data inputs could not be coerced."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/choices.py:212
+#, python-format
+msgid "'%(value)s' is not a valid choice for this field."
+msgid_plural "'%(value)s' are not valid choices for this field."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/Lib/site-packages/wtforms/fields/datetime.py:52
+msgid "Not a valid datetime value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/datetime.py:78
+msgid "Not a valid date value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/datetime.py:104
+msgid "Not a valid time value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/datetime.py:149
+msgid "Not a valid week value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/numeric.py:82
+#: venv/Lib/site-packages/wtforms/fields/numeric.py:92
+msgid "Not a valid integer value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/numeric.py:168
+msgid "Not a valid decimal value."
+msgstr ""
+
+#: venv/Lib/site-packages/wtforms/fields/numeric.py:197
+msgid "Not a valid float value."
+msgstr ""
+

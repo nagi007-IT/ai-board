@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}{{ _('New Post') }} | AI活用掲示板{% endblock %}
+
+{% block content %}
+<div class="py-2">
+  <h1 class="mb-4">{{ _('Create a Post') }}</h1>
+
+  <form method="POST"
+        action="{{ url_for('new_post') }}"
+        enctype="multipart/form-data"
+        class="bg-white p-4 rounded shadow-sm needs-validation"
+        novalidate>
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <div class="mb-3">
+      <label for="genre" class="form-label">{{ _('Genre') }}</label>
+      <input type="text" id="genre" name="genre" class="form-control"
+             value="{{ request.form.genre or '' }}" required>
+      <div class="invalid-feedback">{{ _('Please enter a genre.') }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="title" class="form-label">{{ _('Title') }}</label>
+      <input type="text" id="title" name="title" class="form-control"
+             value="{{ request.form.title or '' }}" required>
+      <div class="invalid-feedback">{{ _('Please enter a title.') }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="content" class="form-label">{{ _('Content') }}</label>
+      <textarea id="content" name="content" rows="5" class="form-control" required>{{ request.form.content or '' }}</textarea>
+      <div class="invalid-feedback">{{ _('Please enter content.') }}</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="tools" class="form-label">{{ _('Tools used') }}</label>
+      <input type="text" id="tools" name="tools" class="form-control"
+             value="{{ request.form.tools or '' }}">
+    </div>
+
+    <div class="mb-3">
+      <label for="ai_name" class="form-label">{{ _('AI used') }}</label>
+      <input type="text" id="ai_name" name="ai_name" class="form-control"
+             value="{{ request.form.ai_name or '' }}">
+    </div>
+
+    <div class="mb-3">
+      <label for="chatlog" class="form-label">{{ _('Chat log URL') }}</label>
+      <input type="url" id="chatlog" name="chatlog" class="form-control"
+             value="{{ request.form.chatlog or '' }}" placeholder="https://...">
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">{{ _('Image (optional)') }}</label>
+      <input type="file" id="image" name="image" class="form-control" accept="image/*">
+      <div class="form-text">JPEG/PNG/WebP。アップロード後は16:9に自動調整されます。</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="tags" class="form-label">{{ _('Tags (multi-select)') }}</label>
+      <select id="tags" name="tags" class="form-select" multiple size="6">
+        {% set selected = request.form.getlist('tags') %}
+        {% for tag in tags %}
+          <option value="{{ tag[0] }}" {% if selected and (tag[0]|string in selected) %}selected{% endif %}>
+            {{ tag[1] }}
+          </option>
+        {% endfor %}
+      </select>
+      <div class="form-text">Ctrl（Cmd）で複数選択。</div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary">{{ _('Post') }}</button>
+      <a href="{{ url_for('show_posts') }}" class="btn btn-secondary">{{ _('Cancel') }}</a>
+    </div>
+  </form>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  const forms = document.querySelectorAll('.needs-validation');
+  Array.prototype.slice.call(forms).forEach(function (form) {
+    form.addEventListener('submit', function (event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+})();
+</script>
+{% endblock %}

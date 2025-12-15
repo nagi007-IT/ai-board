@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}自分の「お気に入り」 | AI活用掲示板{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+  <h1 class="mb-3">★ 自分の「お気に入り」</h1>
+  <a href="{{ url_for('show_posts', sort='likes') }}" class="btn btn-sm btn-outline-primary mb-3">← 一覧へ戻る</a>
+
+  <div class="row g-4">
+    {% for p in posts %}
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          {% set thumb = (p[12] if p|length > 12 and p[12] else (p[11] if p|length > 11 and p[11] else (p[8] if p|length > 8 else None))) %}
+          {% if thumb %}
+            <img src="{{ thumb }}" alt="" class="card-img-top" style="max-height:160px;object-fit:cover;">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title mb-2">
+              <a href="{{ url_for('post_detail', post_id=p[0]) }}">{{ p[2] }}</a>
+            </h5>
+            <p class="mb-1 text-muted">ジャンル: {{ p[1] }}</p>
+            <p class="mb-1">
+              投稿者:
+              <a href="{{ url_for('user_profile', username=p[7]) }}">{{ p[7] }}</a>
+            </p>
+            <p class="text-muted small mb-0">投稿日: {{ p[9] | datetime_jp }}</p>
+            {% if p|length > 10 and p[10] %}
+              <p class="text-muted small">最終更新: {{ p[10] | datetime_jp }}</p>
+            {% endif %}
+          </div>
+
+          <div class="card-footer bg-white">
+            <div class="d-flex align-items-center gap-2">
+              <a class="btn btn-sm btn-outline-secondary"
+                 href="{{ url_for('post_detail', post_id=p[0]) }}">詳細</a>
+
+              <!-- 解除ボタン（POST + CSRF） -->
+              <form method="POST" action="{{ url_for('toggle_favorite', post_id=p[0]) }}">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="btn btn-sm btn-warning">
+                  ★ お気に入り解除 ({{ fav_counts.get(p[0], 0) }})
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="col-12">
+        <div class="alert alert-info">まだ「お気に入り」に追加した投稿はありません。</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

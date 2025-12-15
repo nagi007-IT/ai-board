@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ username }} | AI活用掲示板{% endblock %}
+
+{% block content %}
+<h2 class="mb-3">{{ username }}</h2>
+
+{% if posts %}
+  <div class="row g-3">
+    {% for p in posts %}
+      <div class="col-md-6">
+        <div class="card h-100 shadow-sm">
+          {% set thumb = (p[12] or p[8]) if p|length>12 else (p[8] if p|length>8 else None) %}
+          {% if thumb %}<img src="{{ thumb|cdn }}" class="card-img-top" style="object-fit:cover;height:170px;" alt="thumb">{% endif %}
+          <div class="card-body">
+            <h5 class="card-title"><a class="link-dark" href="{{ url_for('post_detail', post_id=p[0]) }}">{{ p[2] }}</a></h5>
+            <p class="text-muted small mb-2">{{ (p[10] or p[9])|datetime_jp }}</p>
+            <a class="btn btn-sm btn-outline-primary" href="{{ url_for('post_detail', post_id=p[0]) }}">{{ _('Open') }}</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="alert alert-light">{{ _('No posts.') }}</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Edit Post') }} | AI活用掲示板{% endblock %}
+
+{% block content %}
+<div class="container py-2">
+  <h2 class="mb-4">{{ _('Edit Post') }}</h2>
+
+  {% macro pick_img_row(p) -%}
+    {# 12:thumb, 11:orig, 8:legacy image_url #}
+    {% if p|length > 12 and p[12] %}{{ p[12] }}
+    {% elif p|length > 11 and p[11] %}{{ p[11] }}
+    {% elif p|length > 8 and p[8] %}{{ p[8] }}
+    {% else %}{% endif %}
+  {%- endmacro %}
+
+  <form method="POST"
+        action="{{ url_for('edit_post', post_id=post[0]) }}"
+        enctype="multipart/form-data" class="mb-4">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+    <div class="mb-3">
+      <label class="form-label">{{ _('Genre') }}</label>
+      <input type="text" name="genre" class="form-control" value="{{ post[1] or '' }}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">{{ _('Title') }}</label>
+      <input type="text" name="title" class="form-control" value="{{ post[2] or '' }}" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">{{ _('Content') }}</label>
+      <textarea name="content" class="form-control" rows="6" required>{{ post[3] or '' }}</textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">{{ _('Tools used') }}</label>
+      <input type="text" name="tools" class="form-control" value="{{ post[4] or '' }}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">{{ _('Chat log URL') }}</label>
+      <input type="url" name="chatlog" class="form-control" value="{{ post[5] or '' }}">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">{{ _('AI used') }}</label>
+      <input type="text" name="ai_name" class="form-control" value="{{ post[6] or '' }}">
+    </div>
+
+    <!-- ★追加：タグ（複数選択） -->
+    <div class="mb-3">
+      <label class="form-label">{{ _('Tags') }}（複数選択可）</label>
+      <select name="tags" class="form-select" multiple size="8">
+        {% for t in all_tags %}
+          <option value="{{ t[0] }}" {% if t[0] in selected_tag_ids %}selected{% endif %}>
+            {{ t[1] }}
+          </option>
+        {% endfor %}
+      </select>
+      <div class="form-text">Ctrl（Cmd）で複数選択できます。</div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label d-block">{{ _('Current Image') }}</label>
+      {% set _img = pick_img_row(post) %}
+      {% if _img %}
+        <img src="{{ _img|cdn }}" alt="current" class="img-fluid rounded border mb-2" style="max-width: 420px;">
+      {% else %}
+        <div class="text-muted">{{ _('No image') }}</div>
+      {% endif %}
+      <div class="mt-2">
+        <label class="form-label">{{ _('Replace image (optional)') }}</label>
+        <input type="file" name="image" accept="image/*" class="form-control">
+        <div class="form-text">アップロードすると16:9でセンタークロップ・軽量化されます。</div>
+      </div>
+    </div>
+
+    <div class="d-flex gap-2">
+      <button type="submit" class="btn btn-primary">{{ _('Save') }}</button>
+      <a href="{{ url_for('post_detail', post_id=post[0]) }}" class="btn btn-secondary">{{ _('Cancel') }}</a>
+    </div>
+  </form>
+
+  <form method="POST" action="{{ url_for('delete_post', post_id=post[0]) }}"
+        onsubmit="return confirm('{{ _('Delete this post?') }}');">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <button type="submit" class="btn btn-outline-danger">{{ _('Delete this post') }}</button>
+  </form>
+</div>
+{% endblock %}

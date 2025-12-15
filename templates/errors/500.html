@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}サーバエラー | AI活用掲示板{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+  <h1 class="display-5 mb-3">500 Internal Server Error</h1>
+  <p class="text-muted mb-4">
+    サーバでエラーが発生しました。時間をおいて再度お試しください。<br>
+    直前の操作（投稿/編集/通報など）で再現する場合は、お手数ですが管理者へお知らせください。
+  </p>
+
+  <div class="d-flex justify-content-center gap-2 flex-wrap">
+    <a href="{{ url_for('show_posts') }}" class="btn btn-primary">トップへ</a>
+    <button type="button" class="btn btn-outline-secondary" onclick="history.back()">前のページ</button>
+  </div>
+</div>
+{% endblock %}

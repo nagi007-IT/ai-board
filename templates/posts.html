@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Posts') }} | AI活用掲示板{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h4 mb-0">{{ _('Posts') }}</h1>
+</div>
+
+{# --------- 安全なデフォルト値 --------- #}
+{% set genres           = genres|default([]) %}
+{% set keyword          = keyword|default('') %}
+{% set selected_genre   = selected_genre|default('') %}
+{% set sort             = sort|default('new') %}
+{% set all_tags         = all_tags|default([]) %}
+{% set tag_counts       = tag_counts|default({}) %}
+{% set fav_counts       = fav_counts|default({}) %}
+{% set tags_map         = tags_map|default({}) %}
+{% set page             = page|default(1) %}
+{% set has_prev         = has_prev|default(false) %}
+{% set has_next         = has_next|default(false) %}
+{% set selected_tag_ids = selected_tag_ids|default([]) %}
+{% set tags_query       = selected_tag_ids|join(',') %}
+
+{# --------- 検索・絞り込みフォーム --------- #}
+<form class="row gy-2 gx-2 align-items-end mb-3" method="GET" action="{{ url_for('show_posts') }}">
+  <div class="col-sm-5">
+    <label class="form-label">{{ _('Keyword') }}</label>
+    <input
+      type="search"
+      name="q"
+      class="form-control"
+      value="{{ keyword }}"
+      placeholder="{{ _('Search...') }}"
+      aria-label="{{ _('Keyword') }}"
+    >
+  </div>
+
+  <div class="col-sm-3">
+    <label class="form-label">{{ _('Genre') }}</label>
+    <select name="genre" class="form-select" aria-label="{{ _('Genre') }}">
+      <option value="">{{ _('All') }}</option>
+      {% for g in genres %}
+        <option value="{{ g }}" {% if selected_genre == g %}selected{% endif %}>{{ g }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div class="col-sm-2">
+    <label class="form-label">{{ _('Sort') }}</label>
+    <select name="sort" class="form-select" aria-label="{{ _('Sort') }}">
+      <option value="new"       {% if sort == 'new' %}selected{% endif %}>{{ _('Newest') }}</option>
+      <option value="updated"   {% if sort == 'updated' %}selected{% endif %}>{{ _('Updated') }}</option>
+      <option value="likes"     {% if sort == 'likes' %}selected{% endif %}>{{ _('Likes') }}</option>
+      <option value="relevance" {% if sort == 'relevance' %}selected{% endif %}>{{ _('Relevance') }}</option>
+    </select>
+  </div>
+
+  <div class="col-sm-2">
+    <label class="form-label d-block">&nbsp;</label>
+    <button class="btn btn-primary w-100" type="submit">
+      {{ _('Search') }}
+    </button>
+  </div>
+</form>
+
+{# --------- タグフィルタ --------- #}
+{% if all_tags %}
+  <div class="mb-3">
+    {% for t in all_tags %}
+      {% set tag_id   = t[0] %}
+      {% set tag_name = t[1] %}
+      {% set cnt      = tag_counts.get(tag_id, 0) %}
+
+      <a
+        class="btn btn-sm {% if tag_id in selected_tag_ids %}btn-secondary{% else %}btn-outline-secondary{% endif %} me-1 mb-1"
+        href="{{ url_for('show_posts',
+                         q=keyword,
+                         genre=selected_genre,
+                         sort=sort,
+                         tags=tag_id) }}"
+      >
+        #{{ tag_name }}
+        {% if cnt %}
+          <span class="badge text-bg-light ms-1">{{ cnt }}</span>
+        {% endif %}
+      </a>
+    {% endfor %}
+  </div>
+{% endif %}
+
+{# --------- 投稿一覧 --------- #}
+{% if posts %}
+  <div class="row g-3">
+    {% for p in posts %}
+      {% set pid = p["id"] %}
+      {% set img = p.get("card_image_url") %}
+
+      <div class="col-md-6">
+        <div class="card post-card h-100 shadow-sm">
+
+          {# ==== サムネイル ==== #}
+          {% if img %}
+            <img
+              src="{{ img }}"
+              alt="{{ p['title'] }} thumbnail"
+              class="card-img-top rounded-top border-bottom"
+              style="width:100%; aspect-ratio:16/9; object-fit:cover;"
+              loading="lazy"
+            >
+          {% else %}
+            <div
+              class="rounded-top border-bottom d-flex align-items-center justify-content-center text-muted"
+              style="width:100%; aspect-ratio:16/9; background:#f2f3f7;"
+            >
+              <span class="small">no image</span>
+            </div>
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="card-title mb-2">
+              <a
+                href="{{ url_for('post_detail', post_id=pid) }}"
+                class="link-dark text-decoration-none"
+              >
+                {{ p["title"] }}
+              </a>
+            </h5>
+
+            <p class="card-text text-muted small mb-2">
+              {{ p.get("genre") or '-' }} /
+              {{ _('by') }} {{ p.get("author") }} /
+              {{ (p.get("updated_at") or p.get("created_at"))|datetime_jp }}
+
+              {% if fav_counts.get(pid) is not none %}
+                · <span title="{{ _('Favorites') }}">★ {{ fav_counts.get(pid) }}</span>
+              {% endif %}
+
+              {% if p.get("status") and p.get("status") != 'public' %}
+                <span class="badge text-bg-warning ms-1">{{ p.get("status") }}</span>
+              {% endif %}
+            </p>
+
+            {% if tags_map.get(pid) %}
+              <div class="mb-2">
+                {% for tg in tags_map.get(pid) %}
+                  <span class="badge text-bg-light tag-badge">#{{ tg[1] }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            <p class="card-text mb-3">
+              {% set body = p.get("content") or '' %}
+              {{ body[:120] }}{% if body|length > 120 %}…{% endif %}
+            </p>
+
+            <a class="btn btn-outline-primary" href="{{ url_for('post_detail', post_id=pid) }}">
+              {{ _('Open') }}
+            </a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <nav class="mt-4" aria-label="pager">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {% if not has_prev %}disabled{% endif %}">
+        <a
+          class="page-link"
+          href="{{ url_for('show_posts',
+                           q=keyword,
+                           genre=selected_genre,
+                           sort=sort,
+                           tags=tags_query,
+                           page=page-1) }}"
+        >
+          {{ _('Prev') }}
+        </a>
+      </li>
+
+      <li class="page-item disabled">
+        <span class="page-link">{{ page }}</span>
+      </li>
+
+      <li class="page-item {% if not has_next %}disabled{% endif %}">
+        <a
+          class="page-link"
+          href="{{ url_for('show_posts',
+                           q=keyword,
+                           genre=selected_genre,
+                           sort=sort,
+                           tags=tags_query,
+                           page=page+1) }}"
+        >
+          {{ _('Next') }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+{% else %}
+  <div class="alert alert-light">
+    {{ _('No posts found.') }}
+  </div>
+{% endif %}
+
+{% endblock %}

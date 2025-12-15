@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block title %}{{ post[2] }} | AI活用掲示板{% endblock %}
+
+{% block content %}
+<div class="bg-white p-4 rounded shadow-sm">
+  <div class="d-flex justify-content-between align-items-start">
+    <div>
+      <h2 class="mb-1">{{ post[2] }}</h2>
+      <div class="text-muted small">
+        {{ post[1] or '-' }} /
+        {{ _('by') }} {{ author_username or '-' }} ·
+        {{ (post[10] or post[9])|datetime_jp }}
+        {% if post|length > 13 and post[13] and post[13] != 'public' %}
+          <span class="badge text-bg-warning ms-1">{{ post[13] }}</span>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="ms-3">
+      {% if current_user.is_authenticated %}
+        <form method="POST" action="{{ url_for('toggle_favorite', post_id=post[0]) }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <button class="btn btn-outline-primary">
+            ★ {{ _('Favorite') }}
+          </button>
+        </form>
+      {% endif %}
+    </div>
+  </div>
+
+  {# ==== サムネイル決定ロジック ==== #}
+  {% if post %}
+    {% set legacy_image = post[8]  if post|length > 8  else None %}
+    {% set s3_orig      = post[11] if post|length > 11 else None %}
+    {% set thumb_image  = post[12] if post|length > 12 else None %}
+    {% set thumb        = thumb_image or s3_orig or legacy_image %}
+  {% else %}
+    {% set thumb = None %}
+  {% endif %}
+
+  {% if thumb %}
+    <img
+      src="{{ thumb|cdn }}"
+      class="img-fluid rounded border my-3"
+      style="max-height: 420px; width: 100%; object-fit: cover;"
+      alt="image"
+    >
+  {% endif %}
+
+  <dl class="row">
+    <dt class="col-sm-3">{{ _('AI used') }}</dt>
+    <dd class="col-sm-9">{{ post[6] or '-' }}</dd>
+
+    <dt class="col-sm-3">{{ _('Tools') }}</dt>
+    <dd class="col-sm-9">{{ post[4] or '-' }}</dd>
+
+    <dt class="col-sm-3">{{ _('Chat log URL') }}</dt>
+    <dd class="col-sm-9">
+      {% if post[5] %}
+        <a href="{{ post[5] }}" target="_blank" rel="noopener">{{ post[5] }}</a>
+      {% else %}
+        -
+      {% endif %}
+    </dd>
+  </dl>
+
+  <hr>
+
+  <div class="mb-3" style="white-space: pre-wrap;">
+    {{ post[3] }}
+  </div>
+
+  {% if post_tags %}
+    <div class="mb-3">
+      {% for t in post_tags %}
+        <span class="badge text-bg-light me-1 mb-1">#{{ t[1] }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="d-flex gap-2">
+    {% if can_edit %}
+      <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('edit_post', post_id=post[0]) }}">
+        {{ _('Edit') }}
+      </a>
+
+      <form
+        method="POST"
+        action="{{ url_for('delete_post', post_id=post[0]) }}"
+        onsubmit="return confirm('{{ _('Delete this post?') }}');"
+        class="d-inline"
+      >
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="btn btn-sm btn-outline-danger">
+          {{ _('Delete') }}
+        </button>
+      </form>
+    {% endif %}
+
+    <a class="btn btn-sm btn-outline-secondary" href="{{ url_for('export_post_pdf', post_id=post[0]) }}">
+      {{ _('Export PDF') }}
+    </a>
+  </div>
+</div>
+
+{# ===================== コメント ===================== #}
+<div class="mt-4">
+  <h4 class="mb-3">{{ _('Comments') }}</h4>
+
+  {% if current_user.is_authenticated %}
+    <form class="mb-3" method="POST" action="{{ url_for('add_comment', post_id=post[0]) }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <textarea
+        name="comment"
+        class="form-control mb-2"
+        rows="3"
+        placeholder="{{ _('Write a comment...') }}"
+        required
+      ></textarea>
+      <button class="btn btn-primary">{{ _('Post comment') }}</button>
+    </form>
+  {% else %}
+    <div class="alert alert-light">{{ _('Please log in to comment.') }}</div>
+  {% endif %}
+
+  {% if comments %}
+    <ul class="list-group">
+      {% for c in comments %}
+        <li class="list-group-item">
+          <div class="d-flex justify-content-between">
+            <div>
+              <strong>{{ c[3] }}</strong>
+              <span class="text-muted small"> · {{ c[4]|datetime_jp }}</span>
+              {% if c|length > 8 and c[8] and c[8] != 'public' %}
+                <span class="badge text-bg-warning ms-1">{{ c[8] }}</span>
+              {% endif %}
+            </div>
+            <div>
+              {% if current_user.is_authenticated and (current_user.username in (c[3], author_username) or current_user.is_admin) %}
+                <form
+                  method="POST"
+                  action="{{ url_for('delete_comment', comment_id=c[0]) }}?post_id={{ post[0] }}"
+                  onsubmit="return confirm('{{ _('Delete this comment?') }}');"
+                  class="d-inline"
+                >
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                  <button class="btn btn-sm btn-outline-danger">
+                    {{ _('Delete') }}
+                  </button>
+                </form>
+              {% endif %}
+            </div>
+          </div>
+
+          <div class="mt-2" style="white-space: pre-wrap;">
+            {{ c[2] }}
+          </div>
+
+          {% if current_user.is_authenticated %}
+            <form class="mt-2" method="POST" action="{{ url_for('add_comment', post_id=post[0]) }}">
+              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+              <input type="hidden" name="parent_id" value="{{ c[0] }}">
+              <textarea
+                name="comment"
+                class="form-control mb-2"
+                rows="2"
+                placeholder="{{ _('Reply...') }}"
+                required
+              ></textarea>
+              <button class="btn btn-sm btn-outline-primary">
+                {{ _('Reply') }}
+              </button>
+            </form>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="alert alert-light">{{ _('No comments yet.') }}</div>
+  {% endif %}
+</div>
+
+{# ===================== 通報フォーム ===================== #}
+<div class="mt-4">
+  {% if current_user.is_authenticated %}
+    <form class="d-flex align-items-center gap-2" method="POST" action="{{ url_for('create_report') }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <input type="hidden" name="target_type" value="post">
+      <input type="hidden" name="target_id" value="{{ post[0] }}">
+      <input type="text" name="reason" class="form-control" placeholder="{{ _('Report reason (optional)') }}">
+      <button class="btn btn-outline-danger">{{ _('Report') }}</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

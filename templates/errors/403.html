@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block title %}403 | AI活用掲示板{% endblock %}
+{% block content %}
+<div class="text-center py-5">
+  <h1 class="display-5">403</h1>
+  <p class="lead">{{ _('You are not allowed to access this page.') }}</p>
+  <a class="btn btn-primary" href="{{ url_for('show_posts') }}">{{ _('Back to posts') }}</a>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}{{ _('Sign up') }} | AI活用掲示板{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h3 class="mb-3">{{ _('Sign up') }}</h3>
+        <form method="POST" action="{{ url_for('register') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <div class="mb-3">
+            <label class="form-label">{{ _('Username') }}</label>
+            <input type="text" name="username" class="form-control" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">{{ _('Password') }}</label>
+            <input type="password" name="password" class="form-control" required>
+          </div>
+          <button class="btn btn-primary">{{ _('Create account') }}</button>
+          <a class="btn btn-link" href="{{ url_for('login') }}">{{ _('Login') }}</a>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

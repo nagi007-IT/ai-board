@@ -1,0 +1,110 @@
+# =========================
+# Python / Flask
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+dist/
+build/
+pip-wheel-metadata/
+*.egg
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.pytype/
+.ruff_cache/
+.tox/
+.nox/
+.cache/
+
+# Flask
+instance/
+*.log
+
+# =========================
+# Virtualenv / Python env
+# =========================
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# =========================
+# Environment / Secrets
+# =========================
+.env
+.env.*
+!.env.example
+secrets.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# =========================
+# OS / Editor
+# =========================
+# Windows
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+
+# VS Code / JetBrains
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# Node (if you have frontend build)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Uploads / Generated files
+# =========================
+uploads/
+static/uploads/
+*.sqlite3
+*.db
+
+# If you generate PDFs locally
+*.pdf
+
+# =========================
+# Elastic Beanstalk (keep only shared configs)
+# =========================
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+
+# =========================
+# Docker
+# =========================
+.docker/
+docker-compose.override.yml
+
+# =========================
+# Logs / Temp
+# =========================
+*.tmp
+*.swp
+*.swo
+
+flask_session/
+thumbnails/
+*.env.bak
+*.zip

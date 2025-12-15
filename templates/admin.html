@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Admin | AI活用掲示板{% endblock %}
+{% block content %}
+<h2 class="mb-3">Admin</h2>
+<div class="row g-3">
+  <div class="col-sm-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="text-muted">{{ _('Total posts') }}</div>
+        <div class="display-6">{{ total_posts }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="text-muted">{{ _('Total comments') }}</div>
+        <div class="display-6">{{ total_comments }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <div class="text-muted">{{ _('Open reports') }}</div>
+        <div class="display-6">{{ open_reports }}</div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
