@@ -38,6 +38,8 @@ ai-boardは、生成AIの活用事例（用途・ツール・成果）を投稿�
 - Demo：未デプロイ（ローカルで動作）
 - Local Demo：http://127.0.0.1:5000/posts
 - GitHub：https://github.com/nagi007-IT/ai-board
+![投稿一覧画面](docs/images/posts-list.png)
+
 
 ---
 
