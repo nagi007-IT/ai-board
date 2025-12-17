@@ -49,7 +49,6 @@ flowchart LR
   APP --> S3[(S3: image storage)]
 
 
-
 ---
 
 ## 5. 技術スタック（＋選定理由）
