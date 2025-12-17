@@ -46,8 +46,8 @@ ai-boardは、生成AIの活用事例（用途・ツール・成果）を投稿�
 flowchart LR
   U[User] --> APP[Flask App]
   APP --> DB[(PostgreSQL / Supabase)]
-  APP --> S3[(S3: image storage)]
-
+  APP --> S3[(AWS S3: Image Storage)]
+```
 
 ---
 
