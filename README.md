@@ -40,6 +40,15 @@ ai-boardは、生成AIの活用事例（用途・ツール・成果）を投稿�
 - GitHub：https://github.com/nagi007-IT/ai-board
 ![投稿一覧画面](docs/images/posts-list.png)
 
+## AWS構成図
+
+```mermaid
+flowchart LR
+  U[User] --> APP[Flask App]
+  APP --> DB[(PostgreSQL / Supabase)]
+  APP --> S3[(S3: image storage)]
+
+
 
 ---
 
