@@ -46,22 +46,18 @@ ai-boardは、生成AIの活用事例（用途・ツール・成果）を投稿�
 
 ## AWS構成図
 
+## AWS構成図
+
 ```mermaid
 flowchart LR
-  U[User / Browser] --> EB[AWS Elastic Beanstalk<br/>(Flask App)]
+  U[User / Browser] --> EB[AWS Elastic Beanstalk\n(Flask App)]
 
-  %% Database is Supabase (outside AWS)
   EB --> DB[(PostgreSQL / Supabase)]
+  EB --> S3[Amazon S3\nImage Storage]
 
-  %% Image storage on AWS
-  EB --> S3[(Amazon S3<br/>Image Storage)]
-
-  %% IAM permissions for S3 access
-  IAM[IAM Role / Instance Profile<br/>(Least privilege)] -.permits.-> S3
-  IAM -.attached to.-> EB
-
-  %% Note: EB runs on managed infra
-  EB --> EC2[(EC2 managed by EB)]
+  EB -. runs on .-> EC2[EC2\n(managed by EB)]
+  EB -. uses .-> IAM[IAM Role / Instance Profile\n(least privilege)]
+  IAM -. allows .-> S3
 ```
 
 ---
