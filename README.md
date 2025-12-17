@@ -42,6 +42,8 @@ ai-boardは、生成AIの活用事例（用途・ツール・成果）を投稿�
 
 ## AWS構成図
 
+## AWS構成図
+
 ```mermaid
 flowchart LR
   U[User / Browser] --> EB[AWS Elastic Beanstalk<br/>(Flask App)]
@@ -58,6 +60,7 @@ flowchart LR
 
   %% Note: EB runs on managed infra
   EB --> EC2[(EC2 managed by EB)]
+
 
 ```
 
