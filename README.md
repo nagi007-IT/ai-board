@@ -40,22 +40,6 @@ ai-boardは、生成AIの活用事例（用途・ツール・成果）を投稿�
 - GitHub：https://github.com/nagi007-IT/ai-board
 ![投稿一覧画面](docs/images/posts-list.png)
 
-## AWS構成図
-
-## AWS構成図
-
-## AWS構成図
-
-```mermaid
-flowchart LR
-  U[User / Browser] --> EB[AWS Elastic Beanstalk (Flask App)]
-  EB --> DB[(PostgreSQL / Supabase)]
-  EB --> S3[Amazon S3 (Image Storage)]
-  EB -. runs on .-> EC2[Amazon EC2 (managed by EB)]
-  EB -. uses .-> IAM[IAM Role / Instance Profile (least privilege)]
-  IAM -. allows .-> S3
-```
-
 ---
 
 ## 5. 技術スタック（＋選定理由）
